@@ -13,6 +13,34 @@ DTO is not recommended to add business logic methods to such classes, but it is 
 
 util: Utility
 
+### SQL code;
+
+```sql
+CREATE DATABASE employee_database;
+
+use employee_database;
+
+CREATE TABLE employee_table 
+(
+    id INT NOT NULL AUTO_INCREMENT, 
+    name varchar(45), 
+    department varchar(45), 
+    dayAbsent INT NOT NULL, 
+    salary INT, 
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE employee_table 
+    ADD dayAbsent 
+    INT AFTER department;
+
+describe employee_table;
+
+select * from employee_table;
+
+delete from employee_table where id = 1;
+```
+
 ### Java Code;
 
 First create DTO package and create Employee class in it.
