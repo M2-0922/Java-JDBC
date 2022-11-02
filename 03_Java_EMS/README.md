@@ -230,7 +230,6 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
 
     private static final String INSERT_EMPLOYEE = "INSERT INTO employee_table (name, department, daysAbsent) VALUES(?, ?, ?)";
     private static final String DELETE_EMPLOYEE = "DELETE FROM employee_table WHERE id = ?";
-    // private static final String UPDATE_EMPLOYEE = "UPDATE employee_table SET name = ?, department = ?, daysAbsent = ? WHERE id = ?"; ASSIGNMENT
     private static final String FIND_EMPLOYEE = "SELECT * FROM employee_table WHERE id = ?";
     private static final String FIND_ALL_EMPLOYEES = "SELECT * FROM employee_table";
 
@@ -305,34 +304,7 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
 
     @Override
     public void updateEmployee(Employee employee, int id) {
-
-        // ASSIGNMENT
-        // int rowAffected = 0; 
-
-        // try {
-        //     preparedStatement = connnection.prepareStatement(UPDATE_EMPLOYEE);
-        //     preparedStatement.setString(1, employee.getName());
-        //     preparedStatement.setString(2, employee.getDepartment());
-        //     preparedStatement.setInt(3, employee.getDaysAbsent());
-        //     preparedStatement.setInt(4, id);
-
-        //     rowAffected = preparedStatement.executeUpdate();
-
-        // } catch (SQLException e) {
-        //     System.out.println("Unable to update the employee with id: " + id);
-        //     e.printStackTrace();
-        // } finally {
-        //     try {
-        //         preparedStatement.close();
-        //     } catch (SQLException e) {
-        //         e.printStackTrace();
-        //     }
-        // }
-
-        // if(rowAffected > 0) {
-        //     System.out.println("Employee with id: " + id + " is updated");
-        // } 
-        
+        // assignment
     }
 
     @Override
