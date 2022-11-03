@@ -3,7 +3,7 @@
  * @date Nov 02, 2022
  * @version 1.0
  */
- 
+
 package service;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import dao.EmployeeDAOMysqlimpl;
 import dto.Employee;
 import exception.EmployeeNotFoundException;
 
-public class EmployeeServiceimpl implements EmployeeService{
+public class EmployeeServiceimpl implements EmployeeService {
 
     public EmployeeDAO employeeDAO = new EmployeeDAOMysqlimpl();
 
@@ -36,5 +36,10 @@ public class EmployeeServiceimpl implements EmployeeService{
     public List<Employee> findAllEmployees() throws EmployeeNotFoundException {
         return employeeDAO.findAllEmployees();
     }
-    
+
+    @Override
+    public void updateEmployee(Employee employee) throws EmployeeNotFoundException {
+        employeeDAO.updateEmployee(employee);
+    }
+
 }
