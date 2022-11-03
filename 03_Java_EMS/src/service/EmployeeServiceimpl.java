@@ -38,12 +38,12 @@ public class EmployeeServiceimpl implements EmployeeService{
     }
     
     @Override
-	public void updateAllEmployee(Employee e) {
-		employeeDAO.updatePartEmployee(e);
-	}
+    public void updateAllEmployee(Employee e) {
+	employeeDAO.updatePartEmployee(e);
+    }
 	
-	@Override
-	public void updatePartEmployee(Employee e) {
-		employeeDAO.updatePartEmployee(e);
-	}
+    @Override
+    public void updatePartEmployee(Employee e) {
+	employeeDAO.updatePartEmployee(e);
+    }
 }
