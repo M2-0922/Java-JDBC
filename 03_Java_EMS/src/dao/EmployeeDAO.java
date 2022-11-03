@@ -25,4 +25,9 @@ public interface EmployeeDAO {
 
     // public abstract void updateEmployee(Employee e);
     // public abstract void updateEmployee(int id);
+
+    public abstract void updateEmployee(Employee e) throws EmployeeNotFoundException;
+    public abstract void updateAllEmployee(Employee e) throws EmployeeNotFoundException;
+    public abstract void updateAllColumnEmployee(Employee e, String... column) throws EmployeeNotFoundException;
+    
 }

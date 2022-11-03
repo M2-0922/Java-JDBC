@@ -10,6 +10,8 @@ public class EmployeeNotFoundException extends Exception {
     
     private int id;
 
+    public EmployeeNotFoundException(){};
+
     public EmployeeNotFoundException(int id){
         this.id = id;
     }

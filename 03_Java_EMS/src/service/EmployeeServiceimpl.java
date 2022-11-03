@@ -36,5 +36,32 @@ public class EmployeeServiceimpl implements EmployeeService{
     public List<Employee> findAllEmployees() throws EmployeeNotFoundException {
         return employeeDAO.findAllEmployees();
     }
+
+    @Override
+    public void updateEmployee(Employee employee) throws EmployeeNotFoundException {
+        try{
+            employeeDAO.updateEmployee(employee);    
+        }catch(EmployeeNotFoundException e){
+            throw e;
+        }    
+    }
+
+    @Override
+    public void updateAllEmployee(Employee employee) throws EmployeeNotFoundException {
+        try{
+            employeeDAO.updateAllEmployee(employee);
+        }catch(EmployeeNotFoundException e){
+            throw e;
+        } 
+    }
+
+    @Override
+    public void updateAllColumnEmployee(Employee employee, String... column) throws EmployeeNotFoundException {
+        try{
+            employeeDAO.updateAllColumnEmployee(employee, column);
+        }catch(EmployeeNotFoundException e){
+            throw e;
+        } 
+    }
     
 }

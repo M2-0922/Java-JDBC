@@ -34,6 +34,13 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
 
     private static final String FIND_ALL = "SELECT * FROM employee_table";
 
+    private static final String update_employee = "update employee_table set name = ?, department = ?, dayAbsent = ?, salary = ? where id = ?";
+    private static final String update_all_employee = "update employee_table set name = ?, department = ?, dayAbsent = ?, salary = ?";
+    private static final String update_all_employee_name = "update employee_table set name = ?";
+    private static final String update_all_employee_department = "update employee_table set department = ?";
+    private static final String update_all_employee_dayAbsent = "update employee_table set dayAbsent = ?";
+    private static final String update_all_employee_salary = "update employee_table set salary = ?";
+
 
     public EmployeeDAOMysqlimpl (){
         try {
@@ -179,6 +186,138 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
         }
 
         return employees;
+    }
+
+    @Override
+    public void updateEmployee(Employee e) throws EmployeeNotFoundException {
+        int rowAffected = 0;
+
+        try {
+            
+            preparedStatement = connection.prepareStatement(FIND_ALL);
+            preparedStatement.setInt(1, e.getId());
+
+            resultSet = preparedStatement.executeQuery();
+
+            if(!resultSet.next()){
+                throw new EmployeeNotFoundException(e.getId());
+            }
+
+            preparedStatement = connection.prepareStatement(update_employee);
+            preparedStatement.setString(1, e.getName());
+            preparedStatement.setString(2, e.getDepartment());
+            preparedStatement.setInt(3, e.getDayAbsent());
+            preparedStatement.setInt(4, e.getSalary());
+            preparedStatement.setInt(5, e.getId());
+
+            rowAffected = preparedStatement.executeUpdate();
+            System.out.println(rowAffected + " row(s) affected");
+
+        }catch(SQLException e1){
+            System.out.println("Unable to update the employee with id: " + e.getId());
+            e1.printStackTrace();
+        }finally {
+            try {
+                preparedStatement.close();
+            }catch (SQLException e2) {
+                System.out.print("Unable to close the statement");
+                e2.printStackTrace();
+            }
+        }
+
+        if(rowAffected > 0) {
+            System.out.println("Succeed in updating employee");
+        }        
+    }
+
+    @Override
+    public void updateAllEmployee(Employee e) throws EmployeeNotFoundException {
+        int rowAffected = 0;
+
+        try {
+            
+            preparedStatement = connection.prepareStatement(FIND_ALL);
+            resultSet = preparedStatement.executeQuery();
+
+            if(!resultSet.next()){
+                throw new EmployeeNotFoundException();
+            }
+
+            preparedStatement = connection.prepareStatement(update_all_employee);
+            preparedStatement.setString(1, e.getName());
+            preparedStatement.setString(2, e.getDepartment());
+            preparedStatement.setInt(3, e.getDayAbsent());
+            preparedStatement.setInt(4, e.getSalary());
+
+            rowAffected = preparedStatement.executeUpdate();
+            System.out.println(rowAffected + " row(s) affected");
+
+        }catch(SQLException e1){
+            System.out.println("Unable to update the employees");
+            e1.printStackTrace();
+        }finally {
+            try {
+                preparedStatement.close();
+            }catch (SQLException e2) {
+                System.out.print("Unable to close the statement");
+                e2.printStackTrace();
+            }
+        }
+
+        if(rowAffected > 0) {
+            System.out.println("Succeed in updating employee");
+        }
+    }
+
+    @Override
+    public void updateAllColumnEmployee(Employee e, String... column) throws EmployeeNotFoundException {
+        int rowAffected = 0;
+
+        try {
+            
+            preparedStatement = connection.prepareStatement(FIND_ALL);
+            resultSet = preparedStatement.executeQuery();
+
+            if(!resultSet.next()){
+                throw new EmployeeNotFoundException();
+            }
+
+            for(String col: column){
+                if(col.equals("name")){
+                    preparedStatement = connection.prepareStatement(update_all_employee_name);
+                    preparedStatement.setString(1, e.getName());
+                }else if(col.equals("department")){
+                    preparedStatement = connection.prepareStatement(update_all_employee_department);
+                    preparedStatement.setString(1, e.getDepartment());
+                }else if(col.equals("dayAbsent")){
+                    preparedStatement = connection.prepareStatement(update_all_employee_dayAbsent);
+                    preparedStatement.setInt(1, e.getDayAbsent());
+                }else if(col.equals("salary")){
+                    preparedStatement = connection.prepareStatement(update_all_employee_salary);
+                    preparedStatement.setInt(1, e.getSalary());
+                }else{
+                    continue;
+                }
+                
+                rowAffected = preparedStatement.executeUpdate();
+                System.out.println(rowAffected + " row(s) affected with column: " + col);
+            }
+
+        }catch(SQLException e1){
+            System.out.println("Unable to update the employees");
+            e1.printStackTrace();
+        }finally {
+            try {
+                preparedStatement.close();
+            }catch (SQLException e2) {
+                System.out.print("Unable to close the statement");
+                e2.printStackTrace();
+            }
+        }
+
+        if(rowAffected > 0) {
+            System.out.println("Succeed in updating employee");
+        } 
     }
 
 }
