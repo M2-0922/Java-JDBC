@@ -35,12 +35,12 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
     private static final String FIND_ALL = "SELECT * FROM employee_table";
     
     private static final String UPDATE_ALL = 
-			"UPDATE employee_table " 
-			+ "SET name = ?, department = ?, dayAbsent = ?, salary = ? WHERE id = ?"; 
+	"UPDATE employee_table " 
+	+ "SET name = ?, department = ?, dayAbsent = ?, salary = ? WHERE id = ?"; 
 	
-	private static final String UPDATE_PART = 
-			"UPDATE employee_table " 
-			+ "SET department = ?, salary = ? WHERE name = ?"; 
+    private static final String UPDATE_PART = 
+	"UPDATE employee_table " 
+	+ "SET department = ?, salary = ? WHERE name = ?"; 
 
 
     public EmployeeDAOMysqlimpl (){
@@ -195,16 +195,16 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
 		try {
 				// prepare for updating
 				preparedStatement = connection.prepareStatement(UPDATE_ALL);
-				
-	            preparedStatement.setString(1, e.getName());
-	            preparedStatement.setString(2, e.getDepartment());
-	            preparedStatement.setInt(3, e.getDayAbsent());
-	            preparedStatement.setInt(4, e.getSalary());
-	            preparedStatement.setInt(5, e.getId());
+
+		    preparedStatement.setString(1, e.getName());
+		    preparedStatement.setString(2, e.getDepartment());
+		    preparedStatement.setInt(3, e.getDayAbsent());
+		    preparedStatement.setInt(4, e.getSalary());
+		    preparedStatement.setInt(5, e.getId());
 				// update
 				rowEffected = preparedStatement.executeUpdate();
 				System.out.println(rowEffected + "row(s) affected!");
-				
+
 		} catch (SQLException e2) {
 			System.out.println("Unable to update the employee!");
 			e2.printStackTrace();
