@@ -25,11 +25,35 @@ public class App {
             "WMAD Instructor",
             0,
             60000);
+        
+        Employee employee3 = 
+            new Employee
+            (2,
+            "Smith",
+            "WMAD Instructor",
+            0,
+            60000);
+        
+        Employee update_employee1 = 
+        	new Employee
+        	(2, 
+        	"Tom", 
+        	"FrontEnd Developer", 
+        	1, 
+        	65000);
+        
+		Employee update_employee2 = 
+			new Employee
+			("BackEnd Developer", 
+			75000, 
+			"Tom");
+		
 
         // employeeService.addEmployee(employee1);
         // employeeService.addEmployee(employee2);
         // employeeService.deleteEmployee(2);
         // System.out.println(employeeService.findEmployee(1));
+		employeeService.addEmployee(employee3);
 
         List<Employee> employees = employeeService.findAllEmployees();
 
@@ -40,5 +64,8 @@ public class App {
                 "| Employee Department " + employee.getDepartment()
             );
         }
+        
+        employeeService.updateAllEmployee(update_employee1);
+      	employeeService.updatePartEmployee(update_employee2);
     }
 }

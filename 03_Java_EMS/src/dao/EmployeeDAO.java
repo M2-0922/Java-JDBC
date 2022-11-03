@@ -23,6 +23,6 @@ public interface EmployeeDAO {
     public abstract void deleteEmployee(int id);
     public abstract Employee findEmployee(int id) throws EmployeeNotFoundException;
 
-    // public abstract void updateEmployee(Employee e);
-    // public abstract void updateEmployee(int id);
+    public abstract void updateAllEmployee(Employee e);
+	public abstract void updatePartEmployee(Employee e);
 }

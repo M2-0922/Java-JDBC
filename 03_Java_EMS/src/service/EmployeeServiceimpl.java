@@ -37,4 +37,13 @@ public class EmployeeServiceimpl implements EmployeeService{
         return employeeDAO.findAllEmployees();
     }
     
+    @Override
+	public void updateAllEmployee(Employee e) {
+		employeeDAO.updatePartEmployee(e);
+	}
+	
+	@Override
+	public void updatePartEmployee(Employee e) {
+		employeeDAO.updatePartEmployee(e);
+	}
 }

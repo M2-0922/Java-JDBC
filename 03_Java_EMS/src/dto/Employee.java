@@ -23,6 +23,12 @@ public class Employee {
         this.dayAbsent = dayAbsent;
         this.salary = salary;
     }
+    
+    public Employee(String department, int salary, String name){
+        this.department = department;
+        this.salary = salary;
+        this.name = name;
+    }
 
     public int getId(){
         return id;

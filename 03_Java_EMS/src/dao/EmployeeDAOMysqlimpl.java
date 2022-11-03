@@ -33,6 +33,14 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
         "SELECT * FROM employee_table WHERE id = ?";
 
     private static final String FIND_ALL = "SELECT * FROM employee_table";
+    
+    private static final String UPDATE_ALL = 
+			"UPDATE employee_table " 
+			+ "SET name = ?, department = ?, dayAbsent = ?, salary = ? WHERE id = ?"; 
+	
+	private static final String UPDATE_PART = 
+			"UPDATE employee_table " 
+			+ "SET department = ?, salary = ? WHERE name = ?"; 
 
 
     public EmployeeDAOMysqlimpl (){
@@ -181,4 +189,63 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
         return employees;
     }
 
+	@Override
+	public void updateAllEmployee(Employee e) {
+		int rowEffected = 0;
+		try {
+				// prepare for updating
+				preparedStatement = connection.prepareStatement(UPDATE_ALL);
+				
+	            preparedStatement.setString(1, e.getName());
+	            preparedStatement.setString(2, e.getDepartment());
+	            preparedStatement.setInt(3, e.getDayAbsent());
+	            preparedStatement.setInt(4, e.getSalary());
+	            preparedStatement.setInt(5, e.getId());
+				// update
+				rowEffected = preparedStatement.executeUpdate();
+				System.out.println(rowEffected + "row(s) affected!");
+				
+		} catch (SQLException e2) {
+			System.out.println("Unable to update the employee!");
+			e2.printStackTrace();
+		}finally {
+			try {
+				preparedStatement.close();
+			} catch (SQLException e3) {
+				System.out.println("Unable to close the statement!");
+				e3.printStackTrace();
+			}
+		}
+		if (rowEffected > 0) 
+			System.out.println("Employee updateded successfully");
+	}
+
+	@Override
+	public void updatePartEmployee(Employee e) {
+		int rowEffected = 0;
+		try {
+				// prepare for updating
+				preparedStatement = connection.prepareStatement(UPDATE_PART);
+				
+	            preparedStatement.setString(1, e.getDepartment());
+	            preparedStatement.setInt(2, e.getSalary());
+	            preparedStatement.setString(3, e.getName());
+				// update
+				rowEffected = preparedStatement.executeUpdate();
+				System.out.println(rowEffected + "row(s) affected!");
+				
+		} catch (SQLException e2) {
+			System.out.println("Unable to update the employee!");
+			e2.printStackTrace();
+		}finally {
+			try {
+				preparedStatement.close();
+			} catch (SQLException e3) {
+				System.out.println("Unable to close the statement!");
+				e3.printStackTrace();
+			}
+		}
+		if (rowEffected > 0) 
+			System.out.println("Employee updateded successfully");
+	}
 }
