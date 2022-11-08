@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="01_JavaJDBC/src"/>
+	<classpathentry kind="src" path="02_Java_JDBC/src"/>
+	<classpathentry kind="src" path="03_Java_EMS/src"/>
+	<classpathentry kind="src" path="spring-web-application-h2-jpa/src/main/java"/>
+	<classpathentry kind="src" path="spring-web-application-h2-jpa/src/test/java"/>
+	<classpathentry kind="lib" path="spring-web-application-h2-jpa/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="output" path="02_Java_JDBC/bin"/>
+</classpath>
