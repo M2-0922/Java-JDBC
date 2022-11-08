@@ -1,4 +1,4 @@
-JAVA JPA H2 SPRING WEB THYMELEAF APPLICATION
+# JAVA JPA H2 SPRING WEB THYMELEAF APPLICATION
 
 - spring web
 - jpa
@@ -6,13 +6,12 @@ JAVA JPA H2 SPRING WEB THYMELEAF APPLICATION
 - thymeleaf
 - spring devtools
 
-===============================
-resourses folder: where html files are stored 
-src/main/java: where java files are stored
-src/main/resources: where html files is stored
+---
+- resourses folder: where html files are stored 
+- src/main/java: where java files are stored
+- src/main/resources: where html files is stored
+### Project Structure
 
-Project Structure
-=================
 
 `Project.java`
 
