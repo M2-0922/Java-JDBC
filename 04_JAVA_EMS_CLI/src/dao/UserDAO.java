@@ -12,9 +12,9 @@ import dto.User;
 
 public interface UserDAO {
 
-    public static final String URL = "jdbc:mysql://localhost:3306/user";
+    public static final String URL = "jdbc:mysql://127.0.0.1:3306/user";
     public static final String USER = "root";
-    public static final String PASSWORD = "toortoor";
+    public static final String PASSWORD = "jumpeiyamana";
 
     public void insert(User user);
     public void update(User user);

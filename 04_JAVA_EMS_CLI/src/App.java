@@ -57,7 +57,7 @@ public class App {
                         System.out.println("Welcome " + user2.getName());
                     } else {
                         System.out.println("Invalid email or password");
-                    }
+                    }   
                     break;
                 
                 case "3":

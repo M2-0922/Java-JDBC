@@ -1,0 +1,11 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "/Users/manamibatai/Downloads/mysql-connector-j-8.0.31/mysql-connector-j-8.0.31.jar"
+  ],
+  "java.project.sourcePaths": [
+    "04_JAVA_EMS_CLI/src",
+    "demo/src/main/java/com/example/demo"
+  ],
+  "java.configuration.updateBuildConfiguration": "automatic"
+}
