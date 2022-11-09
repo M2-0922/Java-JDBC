@@ -9,7 +9,7 @@ DTO is not recommended to add business logic methods to such classes, but it is 
 
 `DAO` is an abbreviation for `Data Access Object`, so it should encapsulate the logic for retrieving, saving and updating data in your data storage (a database, a file-system, whatever).
 
-``` REFERANCE FROM ``` https://stackoverflow.com/a/14366441
+`REFERANCE FROM` https://stackoverflow.com/a/14366441
 
 util: Utility
 
@@ -20,18 +20,18 @@ CREATE DATABASE employee_database;
 
 use employee_database;
 
-CREATE TABLE employee_table 
+CREATE TABLE employee_table
 (
-    id INT NOT NULL AUTO_INCREMENT, 
-    name varchar(45), 
-    department varchar(45), 
-    dayAbsent INT NOT NULL, 
-    salary INT, 
+    id INT NOT NULL AUTO_INCREMENT,
+    name varchar(45),
+    department varchar(45),
+    dayAbsent INT NOT NULL,
+   saraly INT,
     PRIMARY KEY (id)
 );
 
-ALTER TABLE employee_table 
-    ADD dayAbsent 
+ALTER TABLE employee_table
+    ADD dayAbsent
     INT AFTER department;
 
 describe employee_table;
@@ -52,18 +52,18 @@ First create DTO package and create Employee class in it.
  * @date Oct 31, 2022
  * @version 1.0
  */
- 
+
 package dto;
 
 public class Employee {
-    
+
     private int id;
     private String name;
     private String department;
     private int daysAbsent;
 
     public Employee(){}
-    
+
     public Employee(int id, String name, String department, int daysAbsent) {
         super();
         this.id = id;
@@ -112,6 +112,7 @@ public class Employee {
 }
 
 ```
+
 Then, we are preparing the DB modal for our project. We will create a table named `employee_table` in our database. The table will have 4 columns: `id`, `name`, `department`, `daysAbsent`.
 
 ```sql
@@ -131,7 +132,7 @@ EmployeeDAO.java
  * @date Oct 31, 2022
  * @version 1.0
  */
- 
+
 package dao;
 
 import java.util.List;
@@ -141,14 +142,14 @@ import exception.EmployeeNotFoundException;
 
 public interface EmployeeDAO {
 
-    public static final String URL = "jdbc:mysql://localhost:3306/ems"; 
+    public static final String URL = "jdbc:mysql://localhost:3306/ems";
     public static final String USERNAME = "root";
     public static final String PASSWORD = "toortoor";
     public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     // second, after service layer
     public List<Employee> findAllEmployees() throws EmployeeNotFoundException;
-    
+
     // first
     public abstract void addEmployee(Employee employee);
     public abstract void deleteEmployee(int id);
@@ -168,13 +169,13 @@ Exception package
  * @date Oct 31, 2022
  * @version 1.0
  */
- 
+
 package exception;
 
 public class EmployeeNotFoundException extends Exception {
 
     private int id;
-    
+
     public EmployeeNotFoundException(int id) {
         this.id = id;
     }
@@ -191,7 +192,7 @@ public class EmployeeNotFoundException extends Exception {
     public String toString() {
         return "EmployeeNotFoundException [id=" + id + "]";
     }
-    
+
 }
 
 ```
@@ -205,7 +206,7 @@ EmployeeDAOImpl.java
  * @date Oct 31, 2022
  * @version 1.0
  */
- 
+
 package dao;
 
 import java.sql.Connection;
@@ -224,8 +225,8 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
     private Connection connnection;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
-    // performing CRUD operations 
-    // Create, Read, Update, Delete 
+    // performing CRUD operations
+    // Create, Read, Update, Delete
     // CRUD operations are performed using SQL statements
 
     private static final String INSERT_EMPLOYEE = "INSERT INTO employee_table (name, department, daysAbsent) VALUES(?, ?, ?)";
@@ -272,8 +273,8 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
 
         if(rowAffected > 0) {
             System.out.println("Employee added successfully");
-        } 
-        
+        }
+
     }
 
     @Override
@@ -309,7 +310,7 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
 
     @Override
     public Employee findEmployee(int id) throws EmployeeNotFoundException {
-        
+
         Employee employee = null;
 
         try {
@@ -348,7 +349,7 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
 
         Employee sEmployee = null;
         List<Employee> employees = new LinkedList<>();
-        
+
         try {
             preparedStatement = connnection.prepareStatement(FIND_ALL_EMPLOYEES);
             resultSet = preparedStatement.executeQuery();
@@ -376,7 +377,7 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
 
         return employees;
     }
-    
+
 }
 ```
 
@@ -389,7 +390,7 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
  * @date Oct 31, 2022
  * @version 1.0
  */
- 
+
 package service;
 
 import java.util.List;
@@ -398,7 +399,7 @@ import dto.Employee;
 import exception.EmployeeNotFoundException;
 
 public interface EmployeeService {
-    
+
     public List<Employee> findAllEmployees() throws EmployeeNotFoundException;
 
     public abstract void addEmployee(Employee employee);
@@ -418,7 +419,7 @@ public interface EmployeeService {
  * @date Oct 31, 2022
  * @version 1.0
  */
- 
+
 package service;
 
 import java.util.List;
@@ -505,7 +506,7 @@ public class App {
         //     e.printStackTrace();
         // }
 
-        
+
 
     }
 }

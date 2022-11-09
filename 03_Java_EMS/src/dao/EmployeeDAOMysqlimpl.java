@@ -3,7 +3,7 @@
  * @date Nov 02, 2022
  * @version 1.0
  */
- 
+
 package dao;
 
 import java.sql.*;
@@ -14,31 +14,29 @@ import dto.Employee;
 import exception.EmployeeNotFoundException;
 
 public class EmployeeDAOMysqlimpl implements EmployeeDAO {
-    
+
     private Connection connection;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
     // CREATE, READ, UPDATE, DELETE = CRUD
 
     // ? is placeholder for dynamic data;
-    private static final String INSERT_EMPLOYEE = 
-        "INSERT INTO employee_table" +
-        "(id, name, department, dayAbsent, salary)" +
-        "VALUES (?, ?, ?, ?, ?)";
+    private static final String INSERT_EMPLOYEE = "INSERT INTO employee_table" +
+            "(id, name, department, dayAbsent,saraly)" +
+            "VALUES (?, ?, ?, ?, ?)";
 
-    private static final String DELETE_EMPLOYEE = 
-        "DELETE FROM employee_table WHERE id = ?";
+    private static final String DELETE_EMPLOYEE = "DELETE FROM employee_table WHERE id = ?";
 
-    private static final String FIND_EMPLOYEE = 
-        "SELECT * FROM employee_table WHERE id = ?";
+    private static final String FIND_EMPLOYEE = "SELECT * FROM employee_table WHERE id = ?";
 
     private static final String FIND_ALL = "SELECT * FROM employee_table";
 
+    private static final String UPDATE_EMPLOYEE = "UPDATE employee_table SET name = ?,department = ?,dayAbsent = ?,saraly = ? WHERE id = ?";
 
-    public EmployeeDAOMysqlimpl (){
+    public EmployeeDAOMysqlimpl() {
         try {
             connection = DriverManager
-                .getConnection(EmployeeDAO.URL, EmployeeDAO.USER, EmployeeDAO.PASSWORD);
+                    .getConnection(EmployeeDAO.URL, EmployeeDAO.USER, EmployeeDAO.PASSWORD);
 
             System.out.println("Connection success!");
         } catch (SQLException e) {
@@ -76,7 +74,7 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
             }
         }
 
-        if(rowAffected > 0) {
+        if (rowAffected > 0) {
             System.out.println("Employee added successfully");
         }
     }
@@ -103,14 +101,14 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
             }
         }
 
-        if(rowAffected > 0){
+        if (rowAffected > 0) {
             System.out.println("Employee deleted successfully");
         }
     }
 
     @Override
     public Employee findEmployee(int id) throws EmployeeNotFoundException {
-        
+
         Employee employee = null;
 
         try {
@@ -118,8 +116,8 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
             preparedStatement.setInt(1, id);
 
             resultSet = preparedStatement.executeQuery();
-            
-            if(!resultSet.next()){
+
+            if (!resultSet.next()) {
                 throw new EmployeeNotFoundException(id);
             }
 
@@ -132,7 +130,7 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
 
         } catch (SQLException e) {
             System.out.println("Unable to find the employee with id: " + id);
-        } finally{ 
+        } finally {
             try {
                 preparedStatement.close();
                 resultSet.close();
@@ -147,7 +145,7 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
 
     @Override
     public List<Employee> findAllEmployees() throws EmployeeNotFoundException {
-        
+
         Employee employee = null;
         List<Employee> employees = new LinkedList<>();
 
@@ -155,7 +153,7 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
             preparedStatement = connection.prepareStatement(FIND_ALL);
             resultSet = preparedStatement.executeQuery();
 
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 employee = new Employee();
                 employee.setId(resultSet.getInt("id"));
                 employee.setName(resultSet.getString("name"));
@@ -168,7 +166,7 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
         } catch (SQLException e) {
             System.out.println("Unable to find all employees");
             e.printStackTrace();
-        } finally{
+        } finally {
             try {
                 preparedStatement.close();
                 resultSet.close();
@@ -179,6 +177,40 @@ public class EmployeeDAOMysqlimpl implements EmployeeDAO {
         }
 
         return employees;
+    }
+
+    @Override
+    public void updateEmployee(Employee employee) {
+        int rowAffected = 0;
+
+        try {
+            preparedStatement = connection.prepareStatement(UPDATE_EMPLOYEE);
+            preparedStatement.setString(1, employee.getName());
+            preparedStatement.setString(2, employee.getDepartment());
+            preparedStatement.setInt(3, employee.getDayAbsent());
+            preparedStatement.setInt(4, employee.getSalary());
+            preparedStatement.setInt(5, employee.getId());
+
+            // executeUpdate for adding, deleting, and updating some records on db
+            // executeQuery will return you a ResultSet type value;
+            rowAffected = preparedStatement.executeUpdate();
+            System.out.println(rowAffected + " row(s) affected!");
+
+        } catch (SQLException exception) {
+            System.out.println("Unable to update the employee");
+            exception.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e1) {
+                System.out.println("Unable to close the statement!");
+                e1.printStackTrace();
+            }
+        }
+
+        if (rowAffected > 0) {
+            System.out.println("Employee updated successfully");
+        }
     }
 
 }
