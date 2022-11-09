@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head th:replace="layouts :: head">
-</head>
-
 <body>
     <nav th:replace="layouts :: nav"></nav>
     <div class="container">
-        <form action="/project/save" method="POST">
+        <form action="/employees/save" method="POST">
             <fieldset>
                 <legend>New Project</legend>
 
@@ -21,9 +15,9 @@
                     <label class="mb-3">Project Stage: </label>
                     <br>
                     <select class="form-control" th:field="${project.stage}">
-                        <option th:value="CANCELLED">CANCELLED</option>
-                        <option th:value="COMPLETED">COMPLETED</option>
-                        <option th:value="IN-PROGRESS">IN-PROGRESS</option>
+                        <option th:value="FIRST NAME">FIRST NAME</option>
+                        <option th:value="COMPLETED">LAST NAME</option>
+                        <option th:value="EMAIL">EMAIL</option>
                     </select>
                 </div>
 
@@ -35,6 +29,5 @@
                 <button type="submit" class="btn btn-dark mt-3">Create</button>
             </fieldset>
         </form>
-    </div>  
+    </div>
 </body>
-</html>

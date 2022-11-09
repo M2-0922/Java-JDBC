@@ -8,26 +8,26 @@
     <div class="container">
         <div class="jumbotron">
             <h1 class="display-4">Hello, Developer!</h1>
-            <p class="lead">This is the project management application X.</p>
+            <p class="lead">This is the employement management application X.</p>
             <hr class="my-4">
           </div>
 
-          <h4>Current Projects</h4>
+          <h4>Current Employees</h4>
           <hr>
 
           <table class="table table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
-                    <th>Project Name</th>
-                    <th>Project Stage</th>
-                    <th>Project Description</th>
+                    <th>Employees First Name</th>
+                    <th>Employess Last Name</th>
+                    <th>Employees Email</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="project: ${projects}">
-                    <th th:text="${project.name}"></th>
-                    <th th:text="${project.stage}"></th>
-                    <th th:text="${project.description}"></th>
+                    <th th:text="${employees.firstName}"></th>
+                    <th th:text="${employees.lastName}"></th>
+                    <th th:text="${employees.email}"></th>
                 </tr>
             </tbody>
           </table>
