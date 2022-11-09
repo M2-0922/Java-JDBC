@@ -19,17 +19,19 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String name;
-    private String stage; // COMPLETED, CANCELED, IN-PROGRESS
-    private String description;
+    private long employeeId;
+    private String firstName;
+    private String lastName;
+    private String email;
 
     public Project() {
     }
 
-    public Project(String name, String stage, String description) {
-        this.name = name;
-        this.stage = stage;
-        this.description = description;
+    public Project(long employeeId, String firstName, String lastName, String email) {
+        this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     }
 
     public long getId() {
@@ -40,28 +42,37 @@ public class Project {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public long getEmployeeId() {
+        return employeeId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmployeeId(long employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public String getStage() {
-        return stage;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setStage(String stage) {
-        this.stage = stage;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
 }
+

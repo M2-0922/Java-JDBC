@@ -7,27 +7,45 @@
 
     <div class="container">
         <div class="jumbotron">
-            <h1 class="display-4">Hello, Developer!</h1>
-            <p class="lead">This is the project management application X.</p>
+            <div style="height: 210px; width: 100%; background-image: url(https://source.unsplash.com/1RT4txDDAbM);background-position: center;
+            background-size: cover;display: flex;
+            justify-content: center;
+            align-items: center;">
+            </div>    
+    
+            <h1 class="display-4" style="padding-top: 1rem;">Hello, Employer!</h1>
+            <p class="lead">This is the employee management application Z.</p>
             <hr class="my-4">
           </div>
 
-          <h4>Current Projects</h4>
-          <hr>
+          <nav class="navbar navbar-dark bg-dark" style="padding:1rem;">
+            <h4 class="text-white">All Employees</h4>
+                <form class="form-inline my-2 my-lg-0" style="display: inline-flex;">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="margin: auto 1rem auto 0;">
+                    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                    
+          </nav>
 
-          <table class="table table-bordered table-striped">
+          <div style="padding-bottom: 1rem;"></div>
+
+          <table class="table table-bordered table-striped" style="text-align: center; vertical-align: middle;">
             <thead class="thead-dark">
-                <tr>
-                    <th>Project Name</th>
-                    <th>Project Stage</th>
-                    <th>Project Description</th>
+                    <th></th>
+                    <th>Employee ID</th>
+                    <th>First Name</th>
+                    <th>LastName</th>
+                    <th>Email</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="display: table-header-group;">
                 <tr th:each="project: ${projects}">
-                    <th th:text="${project.name}"></th>
-                    <th th:text="${project.stage}"></th>
-                    <th th:text="${project.description}"></th>
+                    <th class="border border-white" style ="width: 160px; height: 160px; background-position: center; background-size: cover; background-image: url(https://source.unsplash.com/featured/?people,portrait);">
+                    </th>    
+                    <th th:text="${project.employeeId}"></th>
+                    <th th:text="${project.firstName}"></th>
+                    <th th:text="${project.lastName}"></th>
+                    <th th:text="${project.email}"></th>
                 </tr>
             </tbody>
           </table>
