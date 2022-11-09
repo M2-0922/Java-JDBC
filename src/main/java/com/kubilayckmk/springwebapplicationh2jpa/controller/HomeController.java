@@ -27,14 +27,14 @@ public class HomeController {
     @Autowired
     iEmployeeRepository employeeRepository;
     
-    @GetMapping("/")
-    public String displayHome(Model model){
-        List<Project> projects = projectRepository.findAll();
-        model.addAttribute("projects", projects);
-        return "home/index";
-    }
+    // @GetMapping("/")
+    // public String displayHome(Model model){
+    //     List<Project> projects = projectRepository.findAll();
+    //     model.addAttribute("projects", projects);
+    //     return "home/index";
+    // }
     
-    //@GetMapping("/")
+    @GetMapping("/")
     public String displayHome2(Model model){
         List<Employee> employees = employeeRepository.findAll();
         model.addAttribute("employees", employees);
