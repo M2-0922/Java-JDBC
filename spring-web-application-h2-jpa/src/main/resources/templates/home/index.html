@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="layouts :: head">
+
+
 </head>
 <body>
     <nav th:replace="layouts :: nav"></nav>
@@ -32,10 +34,10 @@
           <table class="table table-bordered table-striped" style="text-align: center; vertical-align: middle;">
             <thead class="thead-dark">
                     <th></th>
-                    <th>Employee ID</th>
-                    <th>First Name</th>
-                    <th>LastName</th>
-                    <th>Email</th>
+                    <th><i class="fa-solid fa-id-card"></i> Employee ID</th>
+                    <th><i class="fa-solid fa-signature"></i> First Name</th>
+                    <th><i class="fa-solid fa-signature"></i> LastName</th>
+                    <th><i class="fa-regular fa-envelope"></i> Email</th>
                 </tr>
             </thead>
             <tbody style="display: table-header-group;">
@@ -50,7 +52,10 @@
             </tbody>
           </table>
 
+
+          
     </div>
-    
+  
+
 </body>
 </html>
