@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.kubilayckmk.springwebapplicationh2jpa.dao.iEmployeeRepository;
 import com.kubilayckmk.springwebapplicationh2jpa.dao.iProjectRepository;
+import com.kubilayckmk.springwebapplicationh2jpa.entity.Employee;
 import com.kubilayckmk.springwebapplicationh2jpa.entity.Project;
 
 @Controller
@@ -21,11 +23,18 @@ public class HomeController {
 
     @Autowired
     iProjectRepository projectRepository;
+
+    @Autowired
+    iEmployeeRepository employeeRepository;
     
     @GetMapping("/")
     public String displayHome(Model model){
         List<Project> projects = projectRepository.findAll();
+
+        List<Employee> employees = employeeRepository.findAll();
+
         model.addAttribute("projects", projects);
+        model.addAttribute("employees", employees);
         return "home/index";
     }
 }
