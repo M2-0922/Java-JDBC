@@ -15,6 +15,8 @@ public class HomeController {
 
     @Autowired
     iProjectRepository projectRepository;
+    
+    @Autowired
     EmployeeRepository employeeRepository;
     
     @GetMapping("/")
