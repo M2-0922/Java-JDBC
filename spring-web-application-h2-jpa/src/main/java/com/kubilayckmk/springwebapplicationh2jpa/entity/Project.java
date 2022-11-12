@@ -1,9 +1,3 @@
-/*
- * @author kubilaycakmak
- * @date Nov 08, 2022
- * @version 1.0
- */
- 
 package com.kubilayckmk.springwebapplicationh2jpa.entity;
 
 import javax.persistence.Entity;
