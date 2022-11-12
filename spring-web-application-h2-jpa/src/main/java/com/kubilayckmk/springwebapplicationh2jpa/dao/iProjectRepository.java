@@ -13,7 +13,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.kubilayckmk.springwebapplicationh2jpa.entity.Project;
 
 public interface iProjectRepository extends CrudRepository<Project, Long> {
-    
     @Override
     public List<Project> findAll();
 }

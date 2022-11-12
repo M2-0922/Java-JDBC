@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 213dbef13410a97e697290521978f8393469831b
 package com.kubilayckmk.springwebapplicationh2jpa.dao;
 
 import java.util.List;
@@ -13,4 +16,8 @@ public interface iEmployeeRepository extends
   CrudRepository<Employee, Long> {
     @Override
     public List<Employee> findAll();
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 213dbef13410a97e697290521978f8393469831b

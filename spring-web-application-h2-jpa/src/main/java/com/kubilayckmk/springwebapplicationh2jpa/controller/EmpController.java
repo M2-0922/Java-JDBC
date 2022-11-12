@@ -33,4 +33,8 @@ public class EmpController {
       employeeRepository.save(employee);
         return "redirect:/employee/addEmployee";
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 213dbef13410a97e697290521978f8393469831b
