@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layouts :: head (pageTitle = 'Home')">
+</head>
+<body>
+    <nav th:replace="layouts :: nav"></nav>
+
+    <div class="container">
+          <div class="jumbotron">
+            <div>
+                <h1 class="display-4">Hello, Developer!</h1>
+                <p class="lead" >This is the project management application version <span th:text="${version}"></span></p>
+            </div>
+          </div>
+          <hr>
+
+          <div class="row-of-tables mb-3">
+            <div class="custom-table" >
+                <h4>Employee Projects</h4>
+                <hr>
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Count Of Project</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item: ${employeeProjects}">
+                            <th th:text="${item.firstName}"></th>
+                            <th th:text="${item.lastName}"></th>
+                            <th th:text="${item.countOfProject}"></th>
+                        </tr>
+                    </tbody>
+                </table>
+                
+              </div>
+              <canvas class="custom-table" id="myChart" width="400" height="400"></canvas>
+          </div>
+            <div class="custom-table">
+                <h4>Current Projects</h4>
+                <hr>
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Project Stage</th>
+                            <th>Project Description</th>
+                            <th>Project Employee(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="project: ${projects}">
+                            <th th:text="${project.projectName}"></th>
+                            <th th:text="${project.projectStage}"></th>
+                            <th th:text="${project.projectDescription}"></th>
+                            <th th:text="${project.employees}"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="custom-table">
+                <h4>Current Employee</h4>
+                <hr>
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="employee: ${employees}">
+                            <th th:text="${employee.firstName}"></th>
+                            <th th:text="${employee.lastName}"></th>
+                            <th th:text="${employee.email}"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+          
+          
+    </div>
+
+    <script>
+        var chartData = "[[${jsonChartData}]]";
+    </script>
+    
+    <script type="text/javascript" th:src="@{/js/chartdata.js}"></script>
+</body>
+</html>

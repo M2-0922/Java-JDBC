@@ -1,0 +1,74 @@
+.jumbotron{
+    padding: 12px 16px;
+    background-image: url("https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3540&q=80");
+    background-position: center;
+    border-radius: 8px;
+}
+
+.jumbotron h1{
+  color: white;  
+}
+
+.jumbotron p {
+  color: white;
+  margin: 0;
+}
+
+.row-of-tables{
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+}
+
+.custom-table{
+  /* border: 3px solid black; */
+  flex: 1;
+}
+
+.jumbotron div{
+  padding: 12px 16px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+h4{
+    color: white;
+    border-radius: 8px;
+    padding: 12px 16px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+#myChart{
+  max-width: 300px;
+  max-height: 300px;
+}
+
+/* button:hover{
+  border: 10px solid blue !important;
+} */
+
+body{
+  background: #F0EFF4;
+}
+.auth-page{
+  width: 450px;
+  margin-top: 64px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  background: white;
+}
+
+.auth-page button{
+  width: 100% !important;
+}
+
+.auth-page div a{
+  text-decoration: none;
+  text-align: center;
+  margin: auto auto;
+  width: 100%;
+}
+
+.auth-page .links{
+  text-align: center;
+  width: 100%;
+}
